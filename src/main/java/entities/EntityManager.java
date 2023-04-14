@@ -16,7 +16,7 @@ public class EntityManager extends JPanel implements KeyListener {
     Player player = new Player();
 
     ArrayList<Enemy> enemies = new ArrayList<>(){{
-        add(new Enemy(300, 300, 96, 72, 16, "green_slime"));
+        add(new Enemy(300, 300, 96, 72, 16, 1, "green_slime"));
     }};
 
     @Override
@@ -59,17 +59,27 @@ public class EntityManager extends JPanel implements KeyListener {
 
             if (keys[0]) {
                 enemies.get(i).getRectangle().y += 3;
+                player.setImage("src/main/assets/player/idle/player_forward.png");
             }
             if (keys[1]) {
                 enemies.get(i).getRectangle().x += 3;
+                player.setImage("src/main/assets/player/idle/player_left.png");
             }
             if (keys[2]) {
                 enemies.get(i).getRectangle().y -= 3;
+                player.setImage("src/main/assets/player/idle/player_right.png");
             }
             if (keys[3]) {
                 enemies.get(i).getRectangle().x -= 3;
+                player.setImage("src/main/assets/player/idle/player_forward.png");
+            }
+
+            if (player.getPlayer().intersects(enemies.get(i).getRectangle())) {
+                player.damagePlayer(enemies.get(i).getDamage());
             }
         }
+
+        player.update();
     }
 
     public double calculateAngle(double x1, double y1, double x2, double y2) {

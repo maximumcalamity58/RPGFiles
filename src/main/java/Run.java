@@ -26,9 +26,7 @@ public class Run extends JPanel implements MouseListener, KeyListener {
     }
 
     public void update() {
-        player.update();
         entityManager.update();
-        repaint();
     }
 
     @Override
@@ -36,7 +34,6 @@ public class Run extends JPanel implements MouseListener, KeyListener {
         super.paintComponent(g);
         entityManager.paintComponent(g);
         player.paintComponent(g);
-        repaint();
     }
 
     @Override
@@ -47,13 +44,11 @@ public class Run extends JPanel implements MouseListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         entityManager.keyPressed(e);
-        repaint();
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         entityManager.keyReleased(e);
-        repaint();
     }
 
     @Override
