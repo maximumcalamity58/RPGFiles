@@ -1,5 +1,6 @@
 package main.java.entities;
 
+import main.java.Utils;
 import main.java.entities.enemies.Enemy;
 import main.java.entities.player.Player;
 
@@ -38,8 +39,8 @@ public class EntityManager extends JPanel implements KeyListener {
                 if (enemies.get(i).getType().contains("slime")) {
                     if (enemies.get(i).getJumpCD() <= 0) {
                         enemies.get(i).setJumpCD(110);
-                        int x = 550;
-                        int y = 340;
+                        int x = player.getPlayer().x;
+                        int y = player.getPlayer().y + 50;
 
                         double angleRadians = calculateAngle(x, y, enemies.get(i).getRectangle().x, enemies.get(i).getRectangle().y);
                         xSpeed = (int) (enemies.get(i).getSpeed() * Math.cos(angleRadians));
@@ -59,19 +60,19 @@ public class EntityManager extends JPanel implements KeyListener {
 
             if (keys[0]) {
                 enemies.get(i).getRectangle().y += 3;
-                player.setImage("src/main/assets/player/idle/player_forward.png");
+                player.setFilepath("src/main/assets/player/idle/player_forward.png");
             }
             if (keys[1]) {
                 enemies.get(i).getRectangle().x += 3;
-                player.setImage("src/main/assets/player/idle/player_left.png");
+                player.setFilepath("src/main/assets/player/idle/player_left.png");
             }
             if (keys[2]) {
                 enemies.get(i).getRectangle().y -= 3;
-                player.setImage("src/main/assets/player/idle/player_right.png");
+                player.setFilepath("src/main/assets/player/idle/player_right.png");
             }
             if (keys[3]) {
                 enemies.get(i).getRectangle().x -= 3;
-                player.setImage("src/main/assets/player/idle/player_forward.png");
+                player.setFilepath("src/main/assets/player/idle/player_forward.png");
             }
 
             if (player.getPlayer().intersects(enemies.get(i).getRectangle())) {

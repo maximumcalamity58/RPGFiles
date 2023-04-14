@@ -10,6 +10,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Utils {
+    static int width, height;
+
     //    JSON Reader
     public static Object jsonReadAndWrite(String function, String key, Object var, String type, String filepath) {
         if (function.contains("read")) {
@@ -48,5 +50,21 @@ public class Utils {
             }
         }
         return null;
+    }
+
+    public static void setWidth(int i) {
+        width = i;
+    }
+
+    public static void setHeight(int i) {
+        height = i;
+    }
+
+    public static int getWidth() {
+        return width;
+    }
+
+    public static int getHeight() {
+        return height;
     }
 }

@@ -1,7 +1,9 @@
 package main.java;
 
 import main.java.entities.EntityManager;
+import main.java.entities.player.PlayerImages;
 import main.java.entities.player.Player;
+import main.java.terrain.Ground;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,28 +14,33 @@ import java.awt.event.MouseListener;
 
 public class Run extends JPanel implements MouseListener, KeyListener {
     private Player player = new Player();
+    private PlayerImages playerImages = new PlayerImages();
     private EntityManager entityManager = new EntityManager();
+    private Ground ground = new Ground();
 
     public Run() {
         addMouseListener(this);
         addKeyListener(this);
         addKeyListener(entityManager);
         setLayout(null);
-        player.start();
 
         setFocusable(true);
         grabFocus();
     }
 
     public void update() {
+        player.start();
         entityManager.update();
+        Utils.setWidth(getWidth());
+        Utils.setHeight(getHeight());
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        ground.paintComponent(g);
         entityManager.paintComponent(g);
-        player.paintComponent(g);
+        playerImages.paintComponent(g);
     }
 
     @Override
