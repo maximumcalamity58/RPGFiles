@@ -51,15 +51,15 @@ public class Ground extends JPanel implements KeyListener {
 
         int width = Utils.getWidth() + 120;
         int height = Utils.getHeight() + 120;
+        y = yMod;
         while (y < height) {
+            x = xMod;
             while (x < width) {
                 g.drawImage(image, x, y, image.getWidth(this)*5, image.getWidth(this)*5, null);
                 x += image.getWidth(this)*5;
             }
-            x = xMod;
             y += image.getHeight(this)*5;
         }
-        y = yMod;
     }
 
     @Override

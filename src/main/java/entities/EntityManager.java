@@ -62,21 +62,24 @@ public class EntityManager extends JPanel implements KeyListener {
                 }
             }
 
-            if (keys[0]) {
-                enemies.get(i).getRectangle().y += 3;
-                player.setFilepath("src/main/assets/player/idle/player_forward.png");
-            }
             if (keys[1]) {
                 enemies.get(i).getRectangle().x += 3;
                 player.setFilepath("src/main/assets/player/idle/player_left.png");
             }
-            if (keys[2]) {
-                enemies.get(i).getRectangle().y -= 3;
-                player.setFilepath("src/main/assets/player/idle/player_forward.png");
-            }
+
             if (keys[3]) {
                 enemies.get(i).getRectangle().x -= 3;
                 player.setFilepath("src/main/assets/player/idle/player_right.png");
+            }
+
+            if (keys[2] && !keys[0]) {
+                enemies.get(i).getRectangle().y -= 3;
+                player.setFilepath("src/main/assets/player/idle/player_forward.png");
+            }
+
+            if (keys[0] && !keys[2]) {
+                enemies.get(i).getRectangle().y += 3;
+                player.setFilepath("src/main/assets/player/idle/player_backward.png");
             }
 
             if (player.getPlayer().intersects(enemies.get(i).getRectangle())) {
