@@ -16,6 +16,10 @@ public class EntityManager extends JPanel implements KeyListener {
     private boolean[] keys = new boolean[10];
     Player player = new Player();
 
+    public EntityManager() {
+
+    }
+
     ArrayList<Enemy> enemies = new ArrayList<>(){{
         add(new Enemy(300, 300, 96, 72, 16, 1, "green_slime"));
     }};
@@ -68,11 +72,11 @@ public class EntityManager extends JPanel implements KeyListener {
             }
             if (keys[2]) {
                 enemies.get(i).getRectangle().y -= 3;
-                player.setFilepath("src/main/assets/player/idle/player_right.png");
+                player.setFilepath("src/main/assets/player/idle/player_forward.png");
             }
             if (keys[3]) {
                 enemies.get(i).getRectangle().x -= 3;
-                player.setFilepath("src/main/assets/player/idle/player_forward.png");
+                player.setFilepath("src/main/assets/player/idle/player_right.png");
             }
 
             if (player.getPlayer().intersects(enemies.get(i).getRectangle())) {

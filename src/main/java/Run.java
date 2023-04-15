@@ -1,8 +1,8 @@
 package main.java;
 
 import main.java.entities.EntityManager;
-import main.java.entities.player.PlayerImages;
 import main.java.entities.player.Player;
+import main.java.entities.player.PlayerImages;
 import main.java.terrain.Ground;
 
 import javax.swing.*;
@@ -21,7 +21,6 @@ public class Run extends JPanel implements MouseListener, KeyListener {
     public Run() {
         addMouseListener(this);
         addKeyListener(this);
-        addKeyListener(entityManager);
         setLayout(null);
 
         setFocusable(true);
@@ -31,6 +30,7 @@ public class Run extends JPanel implements MouseListener, KeyListener {
     public void update() {
         player.start();
         entityManager.update();
+        ground.update();
         Utils.setWidth(getWidth());
         Utils.setHeight(getHeight());
     }
@@ -51,11 +51,15 @@ public class Run extends JPanel implements MouseListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         entityManager.keyPressed(e);
+        ground.keyPressed(e);
+//        ground.keyPressed(e);
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         entityManager.keyReleased(e);
+        ground.keyReleased(e);
+//        ground.keyReleased(e);
     }
 
     @Override

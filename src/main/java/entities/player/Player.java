@@ -12,21 +12,24 @@ import java.awt.event.KeyListener;
 public class Player extends JPanel {
     private static int pX;
     private static int pY;
-    private int pWidth = 105;
-    private int pHeight = 135;
-    private int maxHealth = 5;
-    private int health = 5;
-    private int invincibilityFrames;
-    private String filepath = "src/main/assets/player/idle/player_forward.png";
+    private static int pWidth = 105;
+    private static int pHeight = 135;
+    private static int maxHealth = 5;
+    private static int health = 5;
+    private static int invincibilityFrames;
+    private static String filepath /*= "src/main/assets/player/idle/player_forward.png"*/;
+    private Rectangle rect = new Rectangle();
     private double healthPercent;
-    private int healthWidth;
+    private static int healthWidth;
     private boolean started = false;
 
-    public Player() {}
+    public Player() {
+        filepath = "src/main/assets/player/idle/player_forward.png";
+    }
 
     public void start() {
         if (!started && Utils.getWidth() != 0) {
-            maxHealth = (int) Utils.jsonReadAndWrite("read", "max_health", maxHealth, "int", "src/data/playerdata.json");
+            maxHealth = (int) Utils.jsonReadAndWrite("read", "max_health", maxHealth, "static int", "src/data/playerdata.json");
             health = maxHealth;
             started = true;
         }
@@ -40,23 +43,27 @@ public class Player extends JPanel {
         return pY;
     }
 
+    public Rectangle getRect() {
+        return rect;
+    }
+
     public Rectangle getPlayer() {
         return new Rectangle(pX, pY, pWidth, pHeight);
     }
 
-    public int getHealthWidth() {
+    public static int getHealthWidth() {
         return healthWidth;
     }
 
-    public String getFilepath() {
+    public static String getFilepath() {
         return filepath;
     }
 
-    public void setFilepath(String filepath) {
-        this.filepath = filepath;
+    public static void setFilepath(String fp) {
+        filepath = fp;
     }
 
-    public int getMaxHealth() {
+    public static int getMaxHealth() {
         return maxHealth;
     }
 
@@ -64,7 +71,7 @@ public class Player extends JPanel {
         maxHealth = i;
     }
 
-    public int getHealth() {
+    public static int getHealth() {
         return health;
     }
 
