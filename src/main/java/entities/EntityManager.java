@@ -63,23 +63,19 @@ public class EntityManager extends JPanel implements KeyListener {
             }
 
             if (keys[1]) {
-                enemies.get(i).getRectangle().x += 3;
-                player.setFilepath("src/main/assets/player/idle/player_left.png");
+                enemies.get(i).getRectangle().x += Player.getSpeed();
             }
 
             if (keys[3]) {
-                enemies.get(i).getRectangle().x -= 3;
-                player.setFilepath("src/main/assets/player/idle/player_right.png");
+                enemies.get(i).getRectangle().x -= Player.getSpeed();
             }
 
-            if (keys[2] && !keys[0]) {
-                enemies.get(i).getRectangle().y -= 3;
-                player.setFilepath("src/main/assets/player/idle/player_forward.png");
+            if (keys[2]) {
+                enemies.get(i).getRectangle().y -= Player.getSpeed();
             }
 
-            if (keys[0] && !keys[2]) {
-                enemies.get(i).getRectangle().y += 3;
-                player.setFilepath("src/main/assets/player/idle/player_backward.png");
+            if (keys[0]) {
+                enemies.get(i).getRectangle().y += Player.getSpeed();
             }
 
             if (player.getPlayer().intersects(enemies.get(i).getRectangle())) {
@@ -107,18 +103,30 @@ public class EntityManager extends JPanel implements KeyListener {
         switch (keyCode) {
             case KeyEvent.VK_W:
                 keys[0] = true;
+                if (!keys[2]) {
+                    Player.setFilepath("src/main/assets/player/idle/player_backward.png");
+                }
                 break;
 
             case KeyEvent.VK_A:
                 keys[1] = true;
+                if (!(keys[0] || keys[2] || keys[3])) {
+                    Player.setFilepath("src/main/assets/player/running/player_left.gif");
+                }
                 break;
 
             case KeyEvent.VK_S:
                 keys[2] = true;
+                if (!keys[0]) {
+                    Player.setFilepath("src/main/assets/player/idle/player_forward.png");
+                }
                 break;
 
             case KeyEvent.VK_D:
                 keys[3] = true;
+                if (!(keys[0] || keys[1] || keys[2])) {
+                    Player.setFilepath("src/main/assets/player/running/player_right.gif");
+                }
                 break;
 
         }
@@ -130,18 +138,30 @@ public class EntityManager extends JPanel implements KeyListener {
         switch (keyCode) {
             case KeyEvent.VK_W:
                 keys[0] = false;
+                if (!(keys[1] || keys[2] || keys[3])) {
+
+                }
                 break;
 
             case KeyEvent.VK_A:
                 keys[1] = false;
+                if (!(keys[0] || keys[2] || keys[3])) {
+                    Player.setFilepath("src/main/assets/player/idle/player_left.png");
+                }
                 break;
 
             case KeyEvent.VK_S:
                 keys[2] = false;
+                if (!(keys[0] || keys[1] || keys[3])) {
+
+                }
                 break;
 
             case KeyEvent.VK_D:
                 keys[3] = false;
+                if (!(keys[0] || keys[1] || keys[2])) {
+                    Player.setFilepath("src/main/assets/player/idle/player_right.png");
+                }
                 break;
         }
     }

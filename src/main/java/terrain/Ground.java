@@ -1,6 +1,7 @@
 package main.java.terrain;
 
 import main.java.Utils;
+import main.java.entities.player.Player;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -29,16 +30,16 @@ public class Ground extends JPanel implements KeyListener {
 
     public void update() {
         if (keys[0]) {
-            yMod = ((yMod + 3) % 120) -120;
+            yMod = ((yMod + Player.getSpeed()) % 120) - 120;
         }
         if (keys[1]) {
-            xMod = ((xMod + 3) % 120) - 120;
+            xMod = ((xMod + Player.getSpeed()) % 120) - 120;
         }
         if (keys[2]) {
-            yMod = ((yMod - 3) % 120) - 120;
+            yMod = ((yMod - Player.getSpeed()) % 120) - 120;
         }
         if (keys[3]) {
-            xMod = ((xMod - 3) % 120) - 120;
+            xMod = ((xMod - Player.getSpeed()) % 120) - 120;
         }
     }
 
@@ -49,8 +50,8 @@ public class Ground extends JPanel implements KeyListener {
 
         Image image = t.getImage("src/main/assets/ground/town/cobblestone_path.png");
 
-        int width = Utils.getWidth() + 120;
-        int height = Utils.getHeight() + 120;
+        int width = Utils.getWidth();
+        int height = Utils.getHeight();
         y = yMod;
         while (y < height) {
             x = xMod;
@@ -70,6 +71,7 @@ public class Ground extends JPanel implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
+
         switch (keyCode) {
             case KeyEvent.VK_W:
                 keys[0] = true;
@@ -86,7 +88,6 @@ public class Ground extends JPanel implements KeyListener {
             case KeyEvent.VK_D:
                 keys[3] = true;
                 break;
-
         }
     }
 

@@ -16,6 +16,7 @@ public class Player extends JPanel {
     private static int pHeight = 135;
     private static int maxHealth = 5;
     private static int health = 5;
+    private static int speed = 3;
     private static int invincibilityFrames;
     private static String filepath /*= "src/main/assets/player/idle/player_forward.png"*/;
     private Rectangle rect = new Rectangle();
@@ -45,6 +46,10 @@ public class Player extends JPanel {
 
     public Rectangle getRect() {
         return rect;
+    }
+
+    public static int getSpeed() {
+        return speed;
     }
 
     public Rectangle getPlayer() {
