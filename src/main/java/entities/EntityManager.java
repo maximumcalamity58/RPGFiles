@@ -62,20 +62,40 @@ public class EntityManager extends JPanel implements KeyListener {
                 }
             }
 
-            if (keys[1]) {
-                enemies.get(i).getRectangle().x += Player.getSpeed();
-            }
-
-            if (keys[3]) {
-                enemies.get(i).getRectangle().x -= Player.getSpeed();
-            }
-
             if (keys[2]) {
-                enemies.get(i).getRectangle().y -= Player.getSpeed();
+                if (keys[1]) {
+                    enemies.get(i).getRectangle().x += Math.sqrt(Math.pow(Player.getSpeed(), 2)/2);
+                    enemies.get(i).getRectangle().y -= Math.sqrt(Math.pow(Player.getSpeed(), 2)/2);
+                } else if (keys[3]) {
+                    enemies.get(i).getRectangle().x -= Math.sqrt(Math.pow(Player.getSpeed(), 2)/2);
+                    enemies.get(i).getRectangle().y -= Math.sqrt(Math.pow(Player.getSpeed(), 2)/2);
+                } else {
+                    enemies.get(i).getRectangle().y -= Player.getSpeed();
+                }
             }
 
             if (keys[0]) {
-                enemies.get(i).getRectangle().y += Player.getSpeed();
+                if (keys[1]) {
+                    enemies.get(i).getRectangle().x += Math.sqrt(Math.pow(Player.getSpeed(), 2)/2);
+                    enemies.get(i).getRectangle().y += Math.sqrt(Math.pow(Player.getSpeed(), 2)/2);
+                } else if (keys[3]) {
+                    enemies.get(i).getRectangle().x -= Math.sqrt(Math.pow(Player.getSpeed(), 2)/2);
+                    enemies.get(i).getRectangle().y += Math.sqrt(Math.pow(Player.getSpeed(), 2)/2);
+                } else {
+                    enemies.get(i).getRectangle().y += Player.getSpeed();
+                }
+            }
+
+            if (keys[1] && !(keys[0] || keys[2])) {
+                enemies.get(i).getRectangle().x += Player.getSpeed();
+            }
+
+            if (keys[3] && !(keys[0] || keys[2])) {
+                enemies.get(i).getRectangle().x -= Player.getSpeed();
+            }
+
+            if (keys[4]) {
+                player.setHealth(5);
             }
 
             if (player.getPlayer().intersects(enemies.get(i).getRectangle())) {
@@ -129,6 +149,9 @@ public class EntityManager extends JPanel implements KeyListener {
                 }
                 break;
 
+            case KeyEvent.VK_T:
+                player.setHealth(5);
+                break;
         }
     }
 

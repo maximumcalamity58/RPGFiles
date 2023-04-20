@@ -8,15 +8,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class Player extends JPanel {
+public class Player extends JPanel implements MouseListener {
     private static int pX;
     private static int pY;
     private static int pWidth = 105;
     private static int pHeight = 135;
     private static int maxHealth = 5;
     private static int health = 5;
-    private static int speed = 3;
+    private static int speed = 5;
     private static int invincibilityFrames;
     private static String filepath /*= "src/main/assets/player/idle/player_forward.png"*/;
     private Rectangle rect = new Rectangle();
@@ -76,6 +78,10 @@ public class Player extends JPanel {
         maxHealth = i;
     }
 
+    public void setHealth(int i) {
+        health = i;
+    }
+
     public static int getHealth() {
         return health;
     }
@@ -94,5 +100,30 @@ public class Player extends JPanel {
         invincibilityFrames++;
         healthPercent = (double) health / (double) maxHealth;
         healthWidth = (int) (372.0 * healthPercent);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }

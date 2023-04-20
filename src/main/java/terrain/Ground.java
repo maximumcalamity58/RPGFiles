@@ -30,15 +30,34 @@ public class Ground extends JPanel implements KeyListener {
 
     public void update() {
         if (keys[0]) {
-            yMod = ((yMod + Player.getSpeed()) % 120) - 120;
+            if (keys[1]) {
+                yMod = ((yMod + (int) Math.sqrt(Math.pow(Player.getSpeed(), 2)/2) % 120) - 120);
+                xMod = ((xMod + (int) Math.sqrt(Math.pow(Player.getSpeed(), 2)/2) % 120) - 120);
+            } else if (keys[3]) {
+                yMod = ((yMod + (int) Math.sqrt(Math.pow(Player.getSpeed(), 2)/2) % 120) - 120);
+                xMod = ((xMod - (int) Math.sqrt(Math.pow(Player.getSpeed(), 2)/2) % 120) - 120);
+            } else {
+                yMod = ((yMod + Player.getSpeed()) % 120) - 120;
+            }
         }
-        if (keys[1]) {
+
+        if (keys[2]) {
+            if (keys[1]) {
+                yMod = ((yMod - (int) Math.sqrt(Math.pow(Player.getSpeed(), 2)/2) % 120) - 120);
+                xMod = ((xMod + (int) Math.sqrt(Math.pow(Player.getSpeed(), 2)/2) % 120) - 120);
+            } else if (keys[3]) {
+                yMod = ((yMod - (int) Math.sqrt(Math.pow(Player.getSpeed(), 2)/2) % 120) - 120);
+                xMod = ((xMod - (int) Math.sqrt(Math.pow(Player.getSpeed(), 2)/2) % 120) - 120);
+            } else {
+                yMod = ((yMod - Player.getSpeed()) % 120) - 120;
+            }
+        }
+
+        if (keys[1] && !(keys[0] || keys[2])) {
             xMod = ((xMod + Player.getSpeed()) % 120) - 120;
         }
-        if (keys[2]) {
-            yMod = ((yMod - Player.getSpeed()) % 120) - 120;
-        }
-        if (keys[3]) {
+
+        if (keys[3] && !(keys[0] || keys[2])) {
             xMod = ((xMod - Player.getSpeed()) % 120) - 120;
         }
     }

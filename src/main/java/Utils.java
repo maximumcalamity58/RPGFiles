@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import java.awt.*;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -50,6 +51,10 @@ public class Utils {
             }
         }
         return null;
+    }
+
+    public static void readSpriteSheet(String filepath, int xPos, int yPos, int frameWidth, int frameHeight, int framesPerSecond, Graphics g) {
+
     }
 
     public static void setWidth(int i) {
