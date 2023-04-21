@@ -131,21 +131,21 @@ public class EntityManager extends JPanel implements KeyListener {
             case KeyEvent.VK_A:
                 keys[1] = true;
                 if (!(keys[0] || keys[2] || keys[3])) {
-                    Player.setFilepath("src/main/assets/player/running/player_left.gif");
+                    Player.setFilepath("src/main/assets/player/running/player_left.png");
                 }
                 break;
 
             case KeyEvent.VK_S:
                 keys[2] = true;
                 if (!keys[0]) {
-                    Player.setFilepath("src/main/assets/player/idle/player_forward.png");
+                    Player.setFilepath("src/main/assets/player/running/player_forward.png");
                 }
                 break;
 
             case KeyEvent.VK_D:
                 keys[3] = true;
                 if (!(keys[0] || keys[1] || keys[2])) {
-                    Player.setFilepath("src/main/assets/player/running/player_right.gif");
+                    Player.setFilepath("src/main/assets/player/running/player_right.png");
                 }
                 break;
 
@@ -176,7 +176,7 @@ public class EntityManager extends JPanel implements KeyListener {
             case KeyEvent.VK_S:
                 keys[2] = false;
                 if (!(keys[0] || keys[1] || keys[3])) {
-
+                    Player.setFilepath("src/main/assets/player/idle/player_forward.png");
                 }
                 break;
 
