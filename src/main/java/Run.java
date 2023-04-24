@@ -64,7 +64,7 @@ public class Run extends JPanel implements MouseListener, KeyListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        entityManager.mouseClicked(e);
     }
 
     @Override

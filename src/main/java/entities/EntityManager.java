@@ -3,14 +3,17 @@ package main.java.entities;
 import main.java.Utils;
 import main.java.entities.enemies.Enemy;
 import main.java.entities.player.Player;
+import main.java.entities.player.PlayerAttack;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class EntityManager extends JPanel implements KeyListener {
+public class EntityManager extends JPanel implements KeyListener, MouseListener {
     private int xSpeed;
     private int ySpeed;
     private boolean[] keys = new boolean[10];
@@ -131,6 +134,7 @@ public class EntityManager extends JPanel implements KeyListener {
             case KeyEvent.VK_A:
                 keys[1] = true;
                 if (!(keys[0] || keys[2] || keys[3])) {
+
                     Player.setFilepath("src/main/assets/player/running/player_left.png");
                 }
                 break;
@@ -187,5 +191,30 @@ public class EntityManager extends JPanel implements KeyListener {
                 }
                 break;
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }

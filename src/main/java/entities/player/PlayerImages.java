@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class PlayerImages extends Player {
     Player player = new Player();
-    SpriteSheetReader playerAnim = new SpriteSheetReader(getFilepath(), 36);;
+    SpriteSheetReader playerAnim = new SpriteSheetReader(getFilepath(), 36);
 
     @Override
     public void paintComponent(Graphics g) {
